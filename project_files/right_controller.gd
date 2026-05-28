@@ -1,27 +1,32 @@
-extends XRController3D
+extends XROrigin3D
 
-@onready var raycast = $RayCast3D
-@onready var marker = $"../../Marker"
-@onready var xr_origin = $".."
+@export var move_speed: float = 2.5
+@export var deadzone: float = 0.15
+@onready var xr_camera: XRCamera3D = $XRCamera3D
+@onready var left_ctrl: XRController3D = $LeftController
 
-func _ready():
-	# Podłączamy sygnał wciśnięcia przycisku z kontrolera VR
-	button_pressed.connect(_on_button_pressed)
+func _physics_process(delta: float) -> void:
+	var dir := Vector3.ZERO
 
-func _process(delta):
-	# Jeśli laser trafia w podłogę (nasz StaticBody3D)
-	if raycast.is_colliding():
-		marker.visible = true
-		# Przesuwamy kuleczkę dokładnie w punkt trafienia lasera
-		marker.global_position = raycast.get_collision_point()
-	else:
-		# Jeśli celujemy w niebo, ukrywamy kuleczkę
-		marker.visible = false
+	# Wyznaczamy kierunek "przód" i "prawo" na podstawie tego, gdzie patrzy głowa
+	var fwd := -xr_camera.global_transform.basis.z
+	fwd.y = 0.0 # Opcja 5.2 z instrukcji: Wyzerowanie osi Y
+	fwd = fwd.normalized()
+	
+	var right := xr_camera.global_transform.basis.x
+	right.y = 0.0 # Opcja 5.2 z instrukcji: Wyzerowanie osi Y
+	right = right.normalized()
 
-func _on_button_pressed(button_name: String):
-	# "trigger_click" to domyślna nazwa spustu w WebXR
-	if button_name == "trigger_click" and raycast.is_colliding():
-		var hit_point = raycast.get_collision_point()
-		# Teleportujemy gracza (tylko w osiach X i Z, żeby nie wbić się pod ziemię!)
-		xr_origin.global_position.x = hit_point.x
-		xr_origin.global_position.z = hit_point.z
+	# Pobieramy wychylenie lewej gałki z kontrolera WebXR
+	var v: Vector2 = left_ctrl.get_vector2("thumbstick")
+	
+	# Ignorujemy delikatne drgnięcia drążka (deadzone)
+	if v.length() < deadzone:
+		v = Vector2.ZERO
+
+	# Łączymy kierunek patrzenia z wychyleniem gałki
+	dir += fwd * (-v.y) + right * (v.x)
+
+	# Jeśli gałka jest wychylona, przesuwamy gracza
+	if dir.length() > 0.0:
+		global_translate(dir.normalized() * move_speed * delta)
