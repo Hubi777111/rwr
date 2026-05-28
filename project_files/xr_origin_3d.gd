@@ -25,7 +25,8 @@ func _physics_process(delta: float) -> void:
 	if v.length() < deadzone:
 		v = Vector2.ZERO
 
-	dir += fwd * (-v.y) + right * (v.x)
+	# POPRAWKA: Usunięto minus przed v.y
+	dir += fwd * (v.y) + right * (v.x)
 
 	if dir.length() > 0.0:
 		global_translate(dir.normalized() * move_speed * delta)
