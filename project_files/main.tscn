@@ -6,6 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://dw8y1o17dflqb" path="res://assets/modules/hand_r.gltf" id="3_1bvp3"]
 [ext_resource type="Script" uid="uid://b8rcgrjpedig0" path="res://right_controller.gd" id="3_lquwl"]
 [ext_resource type="Texture2D" uid="uid://cri8fk7i23vsc" path="res://icon.svg" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://tx42b76ia34n" path="res://assets/modules/CITY/tree_simple_dark.glb" id="7_2cqfq"]
+[ext_resource type="PackedScene" uid="uid://cqme7suv6nqb5" path="res://assets/modules/CITY/tree_small.glb" id="8_yaehf"]
+[ext_resource type="PackedScene" uid="uid://cbapxfj1run5n" path="res://assets/modules/CITY/tree_thin_dark.glb" id="9_074og"]
+[ext_resource type="PackedScene" uid="uid://cex756rnb4s4p" path="res://assets/modules/CITY/tree_oak.glb" id="10_cegan"]
+[ext_resource type="PackedScene" uid="uid://civ2htkmektgt" path="res://assets/modules/CITY/tree_fat.glb" id="11_82xsv"]
+[ext_resource type="PackedScene" uid="uid://djhpd6g5qe0pw" path="res://assets/modules/CITY/stump_round.glb" id="12_getpj"]
+[ext_resource type="PackedScene" uid="uid://bc0s4yibbk0as" path="res://assets/modules/CITY/stone_smallD.glb" id="13_ryguw"]
+[ext_resource type="PackedScene" uid="uid://ci7qymdpcqoq" path="res://assets/modules/CITY/rock_tallA.glb" id="14_d13ii"]
+[ext_resource type="PackedScene" uid="uid://dogm385hxwoxg" path="res://assets/modules/CITY/mushroom_redTall.glb" id="15_1u8w0"]
+[ext_resource type="PackedScene" uid="uid://dq0nr4tu5v487" path="res://assets/modules/CITY/tree_detailed_dark.glb" id="16_0odxb"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_h2yge"]
 size = Vector2(20, 20)
@@ -32,8 +42,8 @@ script = ExtResource("1_ig7tw")
 script = ExtResource("2_7mycd")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" unique_id=911150710]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027520068, 0.12409653, 0.5658842)
-fov = 46.90091
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018961735, 0.28796244, 1.8460497)
+fov = 45.645397
 
 [node name="LeftController" type="XRController3D" parent="XROrigin3D" unique_id=1123161205]
 tracker = &"left_hand"
@@ -41,7 +51,7 @@ tracker = &"left_hand"
 [node name="HandLeftRoot" type="Node3D" parent="XROrigin3D/LeftController" unique_id=649238948]
 
 [node name="hand_l" parent="XROrigin3D/LeftController/HandLeftRoot" unique_id=1596958218 instance=ExtResource("2_h2yge")]
-transform = Transform3D(0.9979782, 0, -0.063556924, 0, 1, 0, 0.063556924, 0, 0.9979782, -0.2371932, 0.032849163, 0.21620359)
+transform = Transform3D(0.9979782, 0, -0.063556924, 0, 1, 0, 0.063556924, 0, 0.9979782, -0.26341698, -0.061899945, 0.72654617)
 
 [node name="RightController" type="XRController3D" parent="XROrigin3D" unique_id=730045456]
 tracker = &"right_hand"
@@ -50,7 +60,7 @@ script = ExtResource("3_lquwl")
 [node name="HandRightRoot" type="Node3D" parent="XROrigin3D/RightController" unique_id=1029811899]
 
 [node name="hand_r" parent="XROrigin3D/RightController/HandRightRoot" unique_id=346969004 instance=ExtResource("3_1bvp3")]
-transform = Transform3D(0.9995746, 0.010848274, -0.027079033, -0.010876814, 0.9999405, -0.0009066798, 0.027067587, 0.0012010895, 0.99963295, 0.17430343, 0.05054529, 0.2539912)
+transform = Transform3D(0.9995746, 0.010848274, -0.027079033, -0.010876814, 0.9999405, -0.0009066798, 0.027067587, 0.0012010895, 0.99963295, 0.20797022, -0.043340683, 0.7691994)
 
 [node name="RayCast3D" type="RayCast3D" parent="XROrigin3D/RightController" unique_id=649848518]
 target_position = Vector3(0, -5, -10)
@@ -68,7 +78,7 @@ transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.70710
 [node name="Level" type="Node3D" parent="." unique_id=802880576]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Level" unique_id=1466935071]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.052489147, -0.5681505, 0.16745496)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.055700287, -0.56504035, 0.16482389)
 mesh = SubResource("PlaneMesh_h2yge")
 surface_material_override/0 = SubResource("StandardMaterial3D_lquwl")
 
@@ -78,6 +88,36 @@ surface_material_override/0 = SubResource("StandardMaterial3D_lquwl")
 shape = SubResource("BoxShape3D_1bvp3")
 
 [node name="Marker" type="MeshInstance3D" parent="." unique_id=830248090]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022460043, -0.009086914, -1.199259)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022460043, -0.5616899, -1.199259)
 material_override = SubResource("StandardMaterial3D_7mycd")
 mesh = SubResource("SphereMesh_1bvp3")
+
+[node name="tree_simple_dark2" parent="." unique_id=213243154 instance=ExtResource("7_2cqfq")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 2.0596578, -0.54752624, -4.4348826)
+
+[node name="tree_small2" parent="." unique_id=893675936 instance=ExtResource("8_yaehf")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -4.1350274, -0.2938463, -3.1203206)
+
+[node name="tree_thin_dark2" parent="." unique_id=389817236 instance=ExtResource("9_074og")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 5.88573, -0.53573257, 4.2124443)
+
+[node name="tree_oak2" parent="." unique_id=838332320 instance=ExtResource("10_cegan")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -7.5263915, -0.31999308, 7.169811)
+
+[node name="tree_fat2" parent="." unique_id=1189069633 instance=ExtResource("11_82xsv")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -3.736449, -0.37486953, 2.8544703)
+
+[node name="stump_round2" parent="." unique_id=1903373410 instance=ExtResource("12_getpj")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 7.7960105, -0.33645713, -4.54696)
+
+[node name="stone_smallD2" parent="." unique_id=626877390 instance=ExtResource("13_ryguw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 2.317715, -0.335429, 4.7342463)
+
+[node name="rock_tallA2" parent="." unique_id=706996399 instance=ExtResource("14_d13ii")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -0.6923349, 0.19070649, -8.219429)
+
+[node name="mushroom_redTall2" parent="." unique_id=293833787 instance=ExtResource("15_1u8w0")]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 3.9033651, -0.383748, -3.1033974)
+
+[node name="tree_detailed_dark2" parent="." unique_id=398588054 instance=ExtResource("16_0odxb")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -9.138802, -0.8498076, -4.9273167)
