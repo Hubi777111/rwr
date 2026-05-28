@@ -1,12 +1,8 @@
 [gd_scene format=3 uid="uid://cb548sy700mpp"]
 
 [ext_resource type="Script" uid="uid://cbklt868ulo8x" path="res://main.gd" id="1_ig7tw"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_7dm0k"]
-size = Vector3(0.1, 0.1, 0.1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ig7tw"]
-size = Vector3(0.1, 0.1, 0.1)
+[ext_resource type="PackedScene" uid="uid://wwa1g4se7de2" path="res://assets/modules/hand_l.gltf" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://dw8y1o17dflqb" path="res://assets/modules/hand_r.gltf" id="3_1bvp3"]
 
 [node name="Main" type="Node3D" unique_id=1906230346]
 script = ExtResource("1_ig7tw")
@@ -14,18 +10,23 @@ script = ExtResource("1_ig7tw")
 [node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=638771831]
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" unique_id=911150710]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32116672, 0.0034925044, 0)
 
 [node name="LeftController" type="XRController3D" parent="XROrigin3D" unique_id=1123161205]
 tracker = &"left_hand"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/LeftController" unique_id=87640214]
-mesh = SubResource("BoxMesh_7dm0k")
+[node name="HandLeftRoot" type="Node3D" parent="XROrigin3D/LeftController" unique_id=649238948]
+
+[node name="hand_l" parent="XROrigin3D/LeftController/HandLeftRoot" unique_id=1596958218 instance=ExtResource("2_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.268696, 0.00055907667, -0.00026220083)
 
 [node name="RightController" type="XRController3D" parent="XROrigin3D" unique_id=730045456]
 tracker = &"right_hand"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/RightController" unique_id=582449402]
-mesh = SubResource("BoxMesh_ig7tw")
+[node name="HandRightRoot" type="Node3D" parent="XROrigin3D/RightController" unique_id=1029811899]
+
+[node name="hand_r" parent="XROrigin3D/RightController/HandRightRoot" unique_id=346969004 instance=ExtResource("3_1bvp3")]
+transform = Transform3D(0.9997744, 0, -0.02123906, 0, 1, 0, 0.02123906, 0, 0.9997744, 0.2093456, -0.03903523, -0.069153935)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=687101212]
 
