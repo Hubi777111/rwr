@@ -18,7 +18,7 @@ tracker = &"left_hand"
 [node name="HandLeftRoot" type="Node3D" parent="XROrigin3D/LeftController" unique_id=649238948]
 
 [node name="hand_l" parent="XROrigin3D/LeftController/HandLeftRoot" unique_id=1596958218 instance=ExtResource("2_h2yge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.268696, 0.00055907667, -0.00026220083)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08930269, -0.015555188, -0.00026220083)
 
 [node name="RightController" type="XRController3D" parent="XROrigin3D" unique_id=730045456]
 tracker = &"right_hand"
@@ -26,7 +26,7 @@ tracker = &"right_hand"
 [node name="HandRightRoot" type="Node3D" parent="XROrigin3D/RightController" unique_id=1029811899]
 
 [node name="hand_r" parent="XROrigin3D/RightController/HandRightRoot" unique_id=346969004 instance=ExtResource("3_1bvp3")]
-transform = Transform3D(0.9997744, 0, -0.02123906, 0, 1, 0, 0.02123906, 0, 0.9997744, 0.2093456, -0.03903523, -0.069153935)
+transform = Transform3D(0.9997744, 0, -0.02123906, 0, 1, 0, 0.02123906, 0, 0.9997744, -0.0014112145, -0.017643273, -0.012843221)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=687101212]
 
