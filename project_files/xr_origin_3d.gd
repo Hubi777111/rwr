@@ -1,3 +1,5 @@
+
+
 extends XROrigin3D
 
 @export var move_speed: float = 2.5
