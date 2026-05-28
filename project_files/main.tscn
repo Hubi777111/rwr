@@ -5,8 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://wwa1g4se7de2" path="res://assets/modules/hand_l.gltf" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dw8y1o17dflqb" path="res://assets/modules/hand_r.gltf" id="3_1bvp3"]
 [ext_resource type="Script" uid="uid://b8rcgrjpedig0" path="res://right_controller.gd" id="3_lquwl"]
-[ext_resource type="Texture2D" uid="uid://cri8fk7i23vsc" path="res://icon.svg" id="4_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://cf37ru3hij5ww" path="res://assets/modules/CITY/trawa.png" id="6_cegan"]
 [ext_resource type="PackedScene" uid="uid://tx42b76ia34n" path="res://assets/modules/CITY/tree_simple_dark.glb" id="7_2cqfq"]
+[ext_resource type="PackedScene" uid="uid://dyg4odgo3884i" path="res://assets/modules/tree_thin_dark.glb" id="7_82xsv"]
 [ext_resource type="PackedScene" uid="uid://cqme7suv6nqb5" path="res://assets/modules/CITY/tree_small.glb" id="8_yaehf"]
 [ext_resource type="PackedScene" uid="uid://cbapxfj1run5n" path="res://assets/modules/CITY/tree_thin_dark.glb" id="9_074og"]
 [ext_resource type="PackedScene" uid="uid://cex756rnb4s4p" path="res://assets/modules/CITY/tree_oak.glb" id="10_cegan"]
@@ -16,13 +17,21 @@
 [ext_resource type="PackedScene" uid="uid://ci7qymdpcqoq" path="res://assets/modules/CITY/rock_tallA.glb" id="14_d13ii"]
 [ext_resource type="PackedScene" uid="uid://dogm385hxwoxg" path="res://assets/modules/CITY/mushroom_redTall.glb" id="15_1u8w0"]
 [ext_resource type="PackedScene" uid="uid://dq0nr4tu5v487" path="res://assets/modules/CITY/tree_detailed_dark.glb" id="16_0odxb"]
+[ext_resource type="PackedScene" uid="uid://yt2lmuvhv0c1" path="res://assets/modules/CITY/mushroom_tan.glb" id="18_getpj"]
+[ext_resource type="PackedScene" uid="uid://ulexswyi7l2w" path="res://assets/modules/CITY/mushroom_tanGroup.glb" id="19_ryguw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d13ii"]
+albedo_texture = ExtResource("6_cegan")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_h2yge"]
 size = Vector2(20, 20)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1u8w0"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.s3tc.ctex"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
 albedo_color = Color(0.64402, 0.9841022, 0.5756794, 1)
-albedo_texture = ExtResource("4_1bvp3")
+albedo_texture = SubResource("CompressedTexture2D_1u8w0")
 uv1_scale = Vector3(10, 10, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1bvp3"]
@@ -79,6 +88,7 @@ transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.70710
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Level" unique_id=1466935071]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.055700287, -0.56504035, 0.16482389)
+material_override = SubResource("StandardMaterial3D_d13ii")
 mesh = SubResource("PlaneMesh_h2yge")
 surface_material_override/0 = SubResource("StandardMaterial3D_lquwl")
 
@@ -86,6 +96,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_lquwl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/MeshInstance3D/StaticBody3D" unique_id=1136814371]
 shape = SubResource("BoxShape3D_1bvp3")
+
+[node name="tree_thin_dark2" parent="Level" unique_id=1732511747 instance=ExtResource("7_82xsv")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 5.1093125, -0.7481774, -8.123043)
 
 [node name="Marker" type="MeshInstance3D" parent="." unique_id=830248090]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022460043, -0.5616899, -1.199259)
@@ -99,7 +112,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 2.0596578, -0.54752624, -4.43
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -4.1350274, -0.2938463, -3.1203206)
 
 [node name="tree_thin_dark2" parent="." unique_id=389817236 instance=ExtResource("9_074og")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 5.88573, -0.53573257, 4.2124443)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 5.88573, -0.80994016, 1.1604738)
 
 [node name="tree_oak2" parent="." unique_id=838332320 instance=ExtResource("10_cegan")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -7.5263915, -0.31999308, 7.169811)
@@ -111,13 +124,19 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -3.736449, -0.37486953, 2.854
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 7.7960105, -0.33645713, -4.54696)
 
 [node name="stone_smallD2" parent="." unique_id=626877390 instance=ExtResource("13_ryguw")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 2.317715, -0.335429, 4.7342463)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.6137874, -0.4358886, 8.710382)
 
 [node name="rock_tallA2" parent="." unique_id=706996399 instance=ExtResource("14_d13ii")]
-transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -0.6923349, 0.19070649, -8.219429)
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -0.6923349, -0.20473439, -8.219429)
 
 [node name="mushroom_redTall2" parent="." unique_id=293833787 instance=ExtResource("15_1u8w0")]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 3.9033651, -0.383748, -3.1033974)
 
 [node name="tree_detailed_dark2" parent="." unique_id=398588054 instance=ExtResource("16_0odxb")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -9.138802, -0.8498076, -4.9273167)
+
+[node name="mushroom_tan2" parent="." unique_id=1264878398 instance=ExtResource("18_getpj")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 6.102581, -0.21765411, 6.9903765)
+
+[node name="mushroom_tanGroup2" parent="." unique_id=737566752 instance=ExtResource("19_ryguw")]
+transform = Transform3D(-2.1130917, 0, -4.531539, 0, 5, 0, 4.531539, 0, -2.1130917, -7.772643, -0.3399024, -0.6192949)
