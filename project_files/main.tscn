@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://1uij3q7rwqh4" path="res://xr_origin_3d.gd" id="2_7mycd"]
 [ext_resource type="PackedScene" uid="uid://wwa1g4se7de2" path="res://assets/modules/hand_l.gltf" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dw8y1o17dflqb" path="res://assets/modules/hand_r.gltf" id="3_1bvp3"]
+[ext_resource type="Script" uid="uid://b8rcgrjpedig0" path="res://right_controller.gd" id="3_lquwl"]
 [ext_resource type="Texture2D" uid="uid://cri8fk7i23vsc" path="res://icon.svg" id="4_1bvp3"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_h2yge"]
@@ -41,6 +42,7 @@ transform = Transform3D(0.9979782, 0, -0.063556924, 0, 1, 0, 0.063556924, 0, 0.9
 
 [node name="RightController" type="XRController3D" parent="XROrigin3D" unique_id=730045456]
 tracker = &"right_hand"
+script = ExtResource("3_lquwl")
 
 [node name="HandRightRoot" type="Node3D" parent="XROrigin3D/RightController" unique_id=1029811899]
 

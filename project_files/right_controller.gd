@@ -1,32 +1,32 @@
-extends XROrigin3D
+extends XRController3D
 
-@export var move_speed: float = 2.5
-@export var deadzone: float = 0.15
-@onready var xr_camera: XRCamera3D = $XRCamera3D
-@onready var left_ctrl: XRController3D = $LeftController
+@onready var ray: RayCast3D = $RayCast3D
+@onready var marker: MeshInstance3D = $"../../Marker" # Ścieżka do Markera w Main
+@onready var xr_origin: XROrigin3D = $".." # XROrigin3D jest rodzicem kontrolera
 
-func _physics_process(delta: float) -> void:
-	var dir := Vector3.ZERO
+func _ready():
+    # Podpinamy sygnał wciśnięcia spustu
+    button_pressed.connect(_on_button_pressed)
 
-	# Wyznaczamy kierunek "przód" i "prawo" na podstawie tego, gdzie patrzy głowa
-	var fwd := -xr_camera.global_transform.basis.z
-	fwd.y = 0.0 # Opcja 5.2 z instrukcji: Wyzerowanie osi Y
-	fwd = fwd.normalized()
-	
-	var right := xr_camera.global_transform.basis.x
-	right.y = 0.0 # Opcja 5.2 z instrukcji: Wyzerowanie osi Y
-	right = right.normalized()
+func _process(_delta: float) -> void:
+    # RayCast sprawdza kolizję
+    if ray.is_colliding():
+        marker.global_transform.origin = ray.get_collision_point()
+        marker.visible = true
+    else:
+        marker.visible = false
 
-	# Pobieramy wychylenie lewej gałki z kontrolera WebXR
-	var v: Vector2 = left_ctrl.get_vector2("thumbstick")
-	
-	# Ignorujemy delikatne drgnięcia drążka (deadzone)
-	if v.length() < deadzone:
-		v = Vector2.ZERO
-
-	# Łączymy kierunek patrzenia z wychyleniem gałki
-	dir += fwd * (-v.y) + right * (v.x)
-
-	# Jeśli gałka jest wychylona, przesuwamy gracza
-	if dir.length() > 0.0:
-		global_translate(dir.normalized() * move_speed * delta)
+func _on_button_pressed(button_name: String):
+    # Teleportacja na "trigger_click"
+    if button_name == "trigger_click" and ray.is_colliding():
+        var target = ray.get_collision_point()
+        
+        # Logika teleportacji
+        var origin_tf := xr_origin.global_transform
+        # Pobieramy pozycję kamery, żeby po teleportacji gracz nie był "w ziemi"
+        var cam_tf = xr_origin.get_node("XRCamera3D").global_transform
+        var cam_offset = cam_tf.origin - origin_tf.origin
+        
+        cam_offset.y = 0.0 # Zerujemy wysokość, żeby trzymać się poziomu podłogi
+        origin_tf.origin = Vector3(target.x - cam_offset.x, target.y, target.z - cam_offset.z)
+        xr_origin.global_transform = origin_tf
