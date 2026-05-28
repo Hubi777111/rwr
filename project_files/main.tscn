@@ -51,7 +51,7 @@ script = ExtResource("1_ig7tw")
 script = ExtResource("2_7mycd")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" unique_id=911150710]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018961735, 0.28796244, 2.7022905)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018961735, 0.16682869, 2.9684563)
 fov = 45.645397
 
 [node name="LeftController" type="XRController3D" parent="XROrigin3D" unique_id=1123161205]
