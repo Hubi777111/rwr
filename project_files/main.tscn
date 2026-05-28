@@ -127,7 +127,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 7.7960105, -0.33645713, -4.54
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.6137874, -0.4358886, 8.710382)
 
 [node name="rock_tallA2" parent="." unique_id=706996399 instance=ExtResource("14_d13ii")]
-transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -0.6923349, -0.20473439, -8.219429)
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -0.6923349, -0.5702157, -8.219429)
 
 [node name="mushroom_redTall2" parent="." unique_id=293833787 instance=ExtResource("15_1u8w0")]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 3.9033651, -0.383748, -3.1033974)
