@@ -3,9 +3,15 @@
 [ext_resource type="Script" uid="uid://cbklt868ulo8x" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://wwa1g4se7de2" path="res://assets/modules/hand_l.gltf" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dw8y1o17dflqb" path="res://assets/modules/hand_r.gltf" id="3_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://cri8fk7i23vsc" path="res://icon.svg" id="4_1bvp3"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_h2yge"]
 size = Vector2(20, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
+albedo_color = Color(0.64402, 0.9841022, 0.5756794, 1)
+albedo_texture = ExtResource("4_1bvp3")
+uv1_scale = Vector3(10, 10, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1bvp3"]
 size = Vector3(20, 0.1, 20)
@@ -16,7 +22,7 @@ script = ExtResource("1_ig7tw")
 [node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=638771831]
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" unique_id=911150710]
-transform = Transform3D(0.9926479, 0.0912814, 0.079485625, -0.09157114, 0.9957985, 1.8548193e-09, -0.07915167, -0.0072785895, 0.99683607, -0.02259989, 0.09000525, 0.35495758)
+transform = Transform3D(0.9926479, 0.0912814, 0.079485625, -0.09157114, 0.9957985, 2.782229e-09, -0.07915167, -0.0072785905, 0.99683607, -0.0152014345, 0.17543016, 0.3511223)
 fov = 40.65794
 
 [node name="LeftController" type="XRController3D" parent="XROrigin3D" unique_id=1123161205]
@@ -25,7 +31,7 @@ tracker = &"left_hand"
 [node name="HandLeftRoot" type="Node3D" parent="XROrigin3D/LeftController" unique_id=649238948]
 
 [node name="hand_l" parent="XROrigin3D/LeftController/HandLeftRoot" unique_id=1596958218 instance=ExtResource("2_h2yge")]
-transform = Transform3D(0.9979782, 0, -0.063556924, 0, 1, 0, 0.063556924, 0, 0.9979782, -0.19775516, 0.06592578, 0.074786976)
+transform = Transform3D(0.9979782, 0, -0.063556924, 0, 1, 0, 0.063556924, 0, 0.9979782, -0.21780626, 0.080360025, 0.074787006)
 
 [node name="RightController" type="XRController3D" parent="XROrigin3D" unique_id=730045456]
 tracker = &"right_hand"
@@ -33,7 +39,7 @@ tracker = &"right_hand"
 [node name="HandRightRoot" type="Node3D" parent="XROrigin3D/RightController" unique_id=1029811899]
 
 [node name="hand_r" parent="XROrigin3D/RightController/HandRightRoot" unique_id=346969004 instance=ExtResource("3_1bvp3")]
-transform = Transform3D(0.9995746, 0.010848273, -0.027079035, -0.00933684, 0.99842423, 0.05533126, 0.027636617, -0.055054605, 0.99810076, 0.12764153, 0.022823483, 0.025293902)
+transform = Transform3D(0.9995746, 0.010848274, -0.027079033, -0.010876814, 0.9999405, -0.0009066798, 0.027067587, 0.0012010895, 0.99963295, 0.12815477, 0.07735063, 0.07212572)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=687101212]
 
@@ -48,7 +54,9 @@ transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70
 [node name="Level" type="Node3D" parent="." unique_id=802880576]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Level" unique_id=1466935071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00041161478, -0.0021234304, 0.001391232)
 mesh = SubResource("PlaneMesh_h2yge")
+surface_material_override/0 = SubResource("StandardMaterial3D_lquwl")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Level/MeshInstance3D" unique_id=1748907121]
 
