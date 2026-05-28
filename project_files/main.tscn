@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cbklt868ulo8x" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://wwa1g4se7de2" path="res://assets/modules/hand_l.gltf" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dw8y1o17dflqb" path="res://assets/modules/hand_r.gltf" id="3_1bvp3"]
+[ext_resource type="Script" uid="uid://b8rcgrjpedig0" path="res://right_controller.gd" id="3_lquwl"]
 [ext_resource type="Texture2D" uid="uid://cri8fk7i23vsc" path="res://icon.svg" id="4_1bvp3"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_h2yge"]
@@ -16,14 +17,18 @@ uv1_scale = Vector3(10, 10, 10)
 [sub_resource type="BoxShape3D" id="BoxShape3D_1bvp3"]
 size = Vector3(20, 0.1, 20)
 
+[sub_resource type="SphereMesh" id="SphereMesh_1bvp3"]
+radius = 0.02
+height = 0.04
+
 [node name="Main" type="Node3D" unique_id=1906230346]
 script = ExtResource("1_ig7tw")
 
 [node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=638771831]
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" unique_id=911150710]
-transform = Transform3D(0.9926479, 0.0912814, 0.079485625, -0.09157114, 0.9957985, 2.782229e-09, -0.07915167, -0.0072785905, 0.99683607, -0.0152014345, 0.17543016, 0.3511223)
-fov = 40.65794
+transform = Transform3D(0.9867847, 0.090742245, 0.13424562, -0.10084599, 0.99240315, 0.07047074, -0.1268311, -0.08307758, 0.9884392, 0.011237263, 0.27549362, 0.42137316)
+fov = 51.39311
 
 [node name="LeftController" type="XRController3D" parent="XROrigin3D" unique_id=1123161205]
 tracker = &"left_hand"
@@ -35,11 +40,15 @@ transform = Transform3D(0.9979782, 0, -0.063556924, 0, 1, 0, 0.063556924, 0, 0.9
 
 [node name="RightController" type="XRController3D" parent="XROrigin3D" unique_id=730045456]
 tracker = &"right_hand"
+script = ExtResource("3_lquwl")
 
 [node name="HandRightRoot" type="Node3D" parent="XROrigin3D/RightController" unique_id=1029811899]
 
 [node name="hand_r" parent="XROrigin3D/RightController/HandRightRoot" unique_id=346969004 instance=ExtResource("3_1bvp3")]
-transform = Transform3D(0.9995746, 0.010848274, -0.027079033, -0.010876814, 0.9999405, -0.0009066798, 0.027067587, 0.0012010895, 0.99963295, 0.12815477, 0.07735063, 0.07212572)
+transform = Transform3D(0.9995746, 0.010848274, -0.027079033, -0.010876814, 0.9999405, -0.0009066798, 0.027067587, 0.0012010895, 0.99963295, 0.12815477, 0.07735063, 0.071966454)
+
+[node name="RayCast3D" type="RayCast3D" parent="XROrigin3D/RightController" unique_id=649848518]
+target_position = Vector3(0, -5, -10)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=687101212]
 
@@ -49,12 +58,12 @@ offset_bottom = 8.0
 text = "Enter VR"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=270185656]
-transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, -0.0059013367, -0.105181694, 0.0059280396)
 
 [node name="Level" type="Node3D" parent="." unique_id=802880576]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Level" unique_id=1466935071]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00041161478, -0.0021234304, -0.0031523108)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09060033, -0.9474295, -0.017013311)
 mesh = SubResource("PlaneMesh_h2yge")
 surface_material_override/0 = SubResource("StandardMaterial3D_lquwl")
 
@@ -62,3 +71,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_lquwl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/MeshInstance3D/StaticBody3D" unique_id=1136814371]
 shape = SubResource("BoxShape3D_1bvp3")
+
+[node name="Marker" type="MeshInstance3D" parent="." unique_id=830248090]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0088256, 0.13316357, -0.48696786)
+mesh = SubResource("SphereMesh_1bvp3")
