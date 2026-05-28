@@ -2,7 +2,7 @@ extends XROrigin3D
 
 @export var move_speed: float = 2.5
 @export var deadzone: float = 0.15
-@export var snap_angle: float = 45.0
+@export var snap_angle: float = 15.0
 
 @onready var xr_camera: XRCamera3D = $XRCamera3D
 @onready var left_ctrl: XRController3D = $LeftController
