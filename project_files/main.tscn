@@ -27,8 +27,8 @@ script = ExtResource("1_ig7tw")
 [node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=638771831]
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" unique_id=911150710]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0463363, 0.17812434, 0.34927744)
-fov = 44.485344
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.023053147, 0.119106025, 0.56516355)
+fov = 43.450256
 
 [node name="LeftController" type="XRController3D" parent="XROrigin3D" unique_id=1123161205]
 tracker = &"left_hand"
@@ -36,7 +36,7 @@ tracker = &"left_hand"
 [node name="HandLeftRoot" type="Node3D" parent="XROrigin3D/LeftController" unique_id=649238948]
 
 [node name="hand_l" parent="XROrigin3D/LeftController/HandLeftRoot" unique_id=1596958218 instance=ExtResource("2_h2yge")]
-transform = Transform3D(0.9979782, 0, -0.063556924, 0, 1, 0, 0.063556924, 0, 0.9979782, -0.21780626, 0.080360025, 0.074787006)
+transform = Transform3D(0.9979782, 0, -0.063556924, 0, 1, 0, 0.063556924, 0, 0.9979782, -0.22329938, -0.041885734, -0.033606276)
 
 [node name="RightController" type="XRController3D" parent="XROrigin3D" unique_id=730045456]
 tracker = &"right_hand"
@@ -45,7 +45,7 @@ script = ExtResource("3_lquwl")
 [node name="HandRightRoot" type="Node3D" parent="XROrigin3D/RightController" unique_id=1029811899]
 
 [node name="hand_r" parent="XROrigin3D/RightController/HandRightRoot" unique_id=346969004 instance=ExtResource("3_1bvp3")]
-transform = Transform3D(0.9995746, 0.010848274, -0.027079033, -0.010876814, 0.9999405, -0.0009066798, 0.027067587, 0.0012010895, 0.99963295, 0.12531532, 0.07735057, 0.0721402)
+transform = Transform3D(0.9995746, 0.010848274, -0.027079033, -0.010876814, 0.9999405, -0.0009066798, 0.027067587, 0.0012010895, 0.99963295, 0.24396242, -0.016981378, 0.0031827614)
 
 [node name="RayCast3D" type="RayCast3D" parent="XROrigin3D/RightController" unique_id=649848518]
 target_position = Vector3(0, -5, -10)
